@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz From Beyond</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; background-color: #121212; color: #fff; }
+        .hidden { display: none; }
+        .question { margin: 20px 0; }
+        button { background-color: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; margin-top: 10px; }
+        button:hover { background-color: #45a049; }
+        #result { font-size: 18px; margin-top: 20px; padding: 20px; background: #222; border-radius: 10px; }
+        a { color: #1db954; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h1>Quiz From Beyond</h1>
+    <p>Rispondi alle domande per ricevere un omaggio esclusivo in fiera!</p>
+
+    <div id="quiz">
+        <div class="question" id="q1">
+            <p>🦑 Quale autore ha ispirato il nostro mondo?</p>
+            <button onclick="nextQuestion(1, 'a')">A) H.P. Lovecraft</button>
+            <button onclick="nextQuestion(1, 'b')">B) Stephen King</button>
+            <button onclick="nextQuestion(1, 'c')">C) Edgar Allan Poe</button>
+        </div>
+
+        <div class="question hidden" id="q2">
+            <p>🌫️ Qual è un tema ricorrente nelle nostre storie?</p>
+            <button onclick="nextQuestion(2, 'a')">A) Orrore cosmico</button>
+            <button onclick="nextQuestion(2, 'b')">B) Supereroi</button>
+            <button onclick="nextQuestion(2, 'c')">C) Fantasy medievale</button>
+        </div>
+
+        <div class="question hidden" id="q3">
+            <p>🔱 Cosa NON si trova mai nelle storie di From Beyond?</p>
+            <button onclick="showResult()">A) Mostri marini</button>
+            <button onclick="showResult()">B) Conigli parlanti</button>
+            <button onclick="showResult()">C) Testi proibiti</button>
+        </div>
+    </div>
+
+    <div id="result" class="hidden">
+        🎉 Complimenti! Ora segui questi passaggi per ricevere il tuo omaggio:
+        <p><strong>1. Metti like alla nostra pagina Instagram: <a href="https://www.instagram.com/from_beyond_cthulhu_larp" target="_blank">@from_beyond_cthulhu_larp</a></strong></p>
+        <p><strong>2. Scatta uno screenshot come prova.</strong></p>
+        <p><strong>3. Invia un messaggio su Instagram con lo screenshot allegato!</strong></p>
+        <a id="instagramLink" href="https://www.instagram.com/direct/t/from_beyond_cthulhu_larp/?text=Ho%20completato%20il%20quiz!%20Ecco%20la%20prova%20che%20ho%20messo%20like!" target="_blank">
+            📩 Invia il messaggio ora!
+        </a>
+    </div>
+
+    <script>
+        function nextQuestion(current, answer) {
+            document.getElementById("q" + current).classList.add("hidden");
+            document.getElementById("q" + (current + 1)).classList.remove("hidden");
+        }
+
+        function showResult() {
+            document.getElementById("quiz").classList.add("hidden");
+            document.getElementById("result").classList.remove("hidden");
+        }
+    </script>
+
+</body>
+</html>
