@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz From Beyond</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #0d0d0d;
+            color: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+        }
+        button {
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #a00000;
+        }
+        .hidden {
+            display: none;
+        }
+        a {
+            color: #ff4500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Quiz From Beyond</h2>
+    <p>Rispondi correttamente a tutte le domande per vincere il tuo omaggio!</p>
+    
+    <div id="quiz">
+        <div id="question1">
+            <p><strong>1. Quale autore è considerato il padre dell'orrore cosmico?</strong></p>
+            <button onclick="nextQuestion(1, true)">A) H.P. Lovecraft</button>
+            <button onclick="nextQuestion(1, false)">B) Edgar Allan Poe</button>
+            <button onclick="nextQuestion(1, false)">C) Stephen King</button>
+            <button onclick="nextQuestion(1, false)">D) Mary Shelley</button>
+        </div>
+
+        <div id="question2" class="hidden">
+            <p><strong>2. Cosa caratterizza l'orrore cosmico?</strong></p>
+            <button onclick="nextQuestion(2, false)">A) I mostri che uccidono per vendetta</button>
+            <button onclick="nextQuestion(2, false)">B) Il sovrannaturale spiegato razionalmente</button>
+            <button onclick="nextQuestion(2, true)">C) L'indifferenza dell'universo verso l'umanità</button>
+            <button onclick="nextQuestion(2, false)">D) Gli spiriti e i fantasmi</button>
+        </div>
+
+        <div id="question3" class="hidden">
+            <p><strong>3. Quale di questi luoghi è inventato da Lovecraft?</strong></p>
+            <button onclick="nextQuestion(3, false)">A) Salem</button>
+            <button onclick="nextQuestion(3, false)">B) Arkham Asylum</button>
+            <button onclick="nextQuestion(3, false)">C) Silent Hill</button>
+            <button onclick="nextQuestion(3, true)">D) Innsmouth</button>
+        </div>
+    </div>
+
+    <div id="result" class="hidden">
+        <h3>Complimenti! Hai vinto! 🎉</h3>
+        <p>Ora segui questi passaggi per ricevere il tuo omaggio:</p>
+        <ol>
+            <li><a href="https://www.instagram.com/from_beyond_cthulhu_larp/" target="_blank">Metti like alla nostra pagina Instagram</a></li>
+            <li>Fai uno screenshot che dimostri il like</li>
+            <li>Invialo su Instagram in DM</li>
+        </ol>
+        <p><a href="https://www.instagram.com/from_beyond_cthulhu_larp/" target="_blank">
+            📩 Invia il tuo screenshot su Instagram</a></p>
+    </div>
+</div>
+
+<script>
+    let correctAnswers = 0;
+
+    function nextQuestion(questionNumber, isCorrect) {
+        if (isCorrect) {
+            correctAnswers++;
+        }
+
+        document.getElementById(`question${questionNumber}`).classList.add("hidden");
+
+        if (questionNumber < 3) {
+            document.getElementById(`question${questionNumber + 1}`).classList.remove("hidden");
+        } else {
+            if (correctAnswers === 3) {
+                document.getElementById("result").classList.remove("hidden");
+            } else {
+                alert("Non tutte le risposte sono corrette! Riprova.");
+                location.reload(); // Ricarica la pagina per riprovare
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
+
